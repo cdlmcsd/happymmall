@@ -1,6 +1,5 @@
 package com.mmall.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -10,8 +9,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private Integer id;
 
