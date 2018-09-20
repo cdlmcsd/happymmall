@@ -16,7 +16,7 @@ import com.mmall.common.Const;
 import com.mmall.pojo.User;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+import com.mmall.util.RedisShardedPoolUtil;
 
 public class SessionExpireFilter implements Filter {
 
@@ -30,11 +30,11 @@ public class SessionExpireFilter implements Filter {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		String loginToken = CookieUtil.readLoginToken(httpServletRequest);
 		if (StringUtils.isNotEmpty(loginToken)){
-			String jsons = RedisPoolUtil.get(loginToken);
+			String jsons = RedisShardedPoolUtil.get(loginToken);
 			if (jsons != null){
 				User user = JsonUtil.string2Obj(jsons, User.class);
 				if (user != null) {
-					RedisPoolUtil.expire(loginToken, Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
+					RedisShardedPoolUtil.expire(loginToken, Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
 				}
 			}
 		}
