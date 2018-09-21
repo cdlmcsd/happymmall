@@ -20,7 +20,7 @@
 		<property name="useHttpOnlyCookie" value="true" />
 		<property name="cookiePath" value="/" />
 		<property name="domainName" value=".cdl.com" />
-		<property name="cookieMaxAge" value="3153600" />
+		<property name="cookieMaxAge" value="31536000" />
 	</bean>
 
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
